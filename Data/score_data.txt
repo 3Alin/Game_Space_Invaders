@@ -1,0 +1,5 @@
+Alin	7
+Magur	12
+wddw	5
+Test	3
+Testul2	3

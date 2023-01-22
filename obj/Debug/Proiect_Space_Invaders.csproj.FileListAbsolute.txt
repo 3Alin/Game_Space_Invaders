@@ -1,0 +1,14 @@
+D:\Proiecte C++\Proiect_Space_Invaders\bin\Debug\Proiect_Space_Invaders.exe.config
+D:\Proiecte C++\Proiect_Space_Invaders\bin\Debug\Proiect_Space_Invaders.exe
+D:\Proiecte C++\Proiect_Space_Invaders\bin\Debug\Proiect_Space_Invaders.pdb
+D:\Proiecte C++\Proiect_Space_Invaders\obj\Debug\Proiect_Space_Invaders.csproj.AssemblyReference.cache
+D:\Proiecte C++\Proiect_Space_Invaders\obj\Debug\Proiect_Space_Invaders.csproj.SuggestedBindingRedirects.cache
+D:\Proiecte C++\Proiect_Space_Invaders\obj\Debug\Proiect_Space_Invaders.Properties.Resources.resources
+D:\Proiecte C++\Proiect_Space_Invaders\obj\Debug\Proiect_Space_Invaders.csproj.GenerateResource.cache
+D:\Proiecte C++\Proiect_Space_Invaders\obj\Debug\Proiect_Space_Invaders.csproj.CoreCompileInputs.cache
+D:\Proiecte C++\Proiect_Space_Invaders\obj\Debug\Proiect_Space_Invaders.exe
+D:\Proiecte C++\Proiect_Space_Invaders\obj\Debug\Proiect_Space_Invaders.pdb
+D:\Proiecte C++\Proiect_Space_Invaders\obj\Debug\Proiect_Space_Invaders.AppForm.resources
+D:\Proiecte C++\Proiect_Space_Invaders\obj\Debug\Proiect_Space_Invaders.UI.GamePanel.resources
+D:\Proiecte C++\Proiect_Space_Invaders\obj\Debug\Proiect_Space_Invaders.UI.MenuPanel.resources
+D:\Proiecte C++\Proiect_Space_Invaders\obj\Debug\Proiect_Space_Invaders.UI.EndPanel.resources
