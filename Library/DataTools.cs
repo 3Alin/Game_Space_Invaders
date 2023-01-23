@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Proiect_Space_Invaders.Library
 {
@@ -77,6 +75,7 @@ namespace Proiect_Space_Invaders.Library
             }
             catch(Exception e) 
             {
+                Console.WriteLine(e.Message);
                 return false; 
             }
             return true;

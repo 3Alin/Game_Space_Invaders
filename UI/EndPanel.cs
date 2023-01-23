@@ -40,9 +40,9 @@ namespace Proiect_Space_Invaders.UI
         private void saveButton_Click(object sender, EventArgs e)
         {
             string name = textBox1.Text;
-            if (name.Length < 3 || name.Length > 20)
+            if (name.Length < 4 || name.Length > 15)
             {
-                displayError("Must be between 3 - 20 characters");
+                displayError("Must be between 4 - 15 characters");
                 return;
             }
             foreach (char c in name)

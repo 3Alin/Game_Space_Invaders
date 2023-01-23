@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Proiect_Space_Invaders.Library;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Proiect_Space_Invaders.Game
 {
@@ -62,14 +59,15 @@ namespace Proiect_Space_Invaders.Game
 
             lastMilestone = player.score;
 
-            if (MAX_SHIPS < 60)
+            if (MAX_SHIPS < 13)
                 growShipsVectorWith(3);
-            if (ENEMY_SPAWN_COOLDOWN > 50)
+            if (ENEMY_SPAWN_COOLDOWN >= 25)
                 ENEMY_SPAWN_COOLDOWN -= 25;
 
-            ENEMY_HEALTH += 2;
+            ENEMY_HEALTH += 3;
             player.health += 1;
             UITools.refreshGamePanel("healthLabel", "Health: " + player.health);
+            AssetManager.playSound("difficulty.wav");
         }
 
         private void growShipsVectorWith(int value)

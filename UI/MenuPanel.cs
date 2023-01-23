@@ -45,13 +45,15 @@ namespace Proiect_Space_Invaders.UI
 
         private void MenuPanel_VisibleChanged(object sender, EventArgs e)
         {
-            if (Visible)
-            {
-                scoresBox.Text = DataTools.dataToString(DataTools.getSortedScoreData()).Replace("\n", Environment.NewLine); ;
-                //List<playerData> data = DataTools.getSortedScoreData();
-                //foreach (playerData player in data)
-                //    scoresBox.Text +=
-            }
+            if (Visible && DataTools.getScoreData() != null)
+                scoresBox.Text = 
+                    Environment.NewLine + Environment.NewLine + '\t' +
+                    DataTools.dataToString(DataTools.getSortedScoreData()).Replace("\n", Environment.NewLine + '\t');
+        }
+
+        private void flickerBox_CheckedChanged(object sender, EventArgs e)
+        {
+            game.flicker = flickerBox.Checked;
         }
     }
 }

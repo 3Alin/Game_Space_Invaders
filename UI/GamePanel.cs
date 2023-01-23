@@ -19,7 +19,11 @@ namespace Proiect_Space_Invaders.UI
         public GamePanel()
         {
             InitializeComponent();
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            this.SetStyle(
+            ControlStyles.AllPaintingInWmPaint |
+            ControlStyles.UserPaint |
+            ControlStyles.DoubleBuffer,
+            true);
         }
 
        
@@ -45,7 +49,7 @@ namespace Proiect_Space_Invaders.UI
 
         private void cooldownLabel_Click(object sender, EventArgs e)
         {
-            if (game.getPlayer().shoot_cooldown < 11 || !purchase())
+            if (!purchase() || game.getPlayer().shoot_cooldown < 11)
                 return;
             game.getPlayer().shoot_cooldown -= 10;
             refreshUI();

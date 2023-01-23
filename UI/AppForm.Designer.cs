@@ -28,14 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.endPanel1 = new Proiect_Space_Invaders.UI.EndPanel();
             this.gamePanel1 = new Proiect_Space_Invaders.UI.GamePanel();
             this.main_Menu1 = new Proiect_Space_Invaders.UI.MenuPanel();
-            this.endPanel1 = new Proiect_Space_Invaders.UI.EndPanel();
             this.SuspendLayout();
+            // 
+            // endPanel1
+            // 
+            this.endPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.endPanel1.game = null;
+            this.endPanel1.gamePanel = null;
+            this.endPanel1.Location = new System.Drawing.Point(901, 219);
+            this.endPanel1.menuPanel = null;
+            this.endPanel1.MinimumSize = new System.Drawing.Size(600, 600);
+            this.endPanel1.Name = "endPanel1";
+            this.endPanel1.Size = new System.Drawing.Size(600, 600);
+            this.endPanel1.TabIndex = 2;
+            this.endPanel1.Load += new System.EventHandler(this.endPanel1_Load);
             // 
             // gamePanel1
             // 
             this.gamePanel1.BackColor = System.Drawing.Color.Black;
+            this.gamePanel1.game = null;
             this.gamePanel1.Location = new System.Drawing.Point(901, -12);
             this.gamePanel1.MinimumSize = new System.Drawing.Size(1000, 700);
             this.gamePanel1.Name = "gamePanel1";
@@ -45,8 +59,9 @@
             // 
             // main_Menu1
             // 
-            this.main_Menu1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.main_Menu1.BackColor = System.Drawing.Color.Black;
             this.main_Menu1.endPanel = null;
+            this.main_Menu1.ForeColor = System.Drawing.Color.White;
             this.main_Menu1.game = null;
             this.main_Menu1.gamePanel = null;
             this.main_Menu1.Location = new System.Drawing.Point(-9, -12);
@@ -55,16 +70,6 @@
             this.main_Menu1.Size = new System.Drawing.Size(1300, 900);
             this.main_Menu1.TabIndex = 0;
             this.main_Menu1.Load += new System.EventHandler(this.main_Menu1_Load);
-            // 
-            // endPanel1
-            // 
-            this.endPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.endPanel1.Location = new System.Drawing.Point(901, 219);
-            this.endPanel1.MinimumSize = new System.Drawing.Size(600, 600);
-            this.endPanel1.Name = "endPanel1";
-            this.endPanel1.Size = new System.Drawing.Size(600, 600);
-            this.endPanel1.TabIndex = 2;
-            this.endPanel1.Load += new System.EventHandler(this.endPanel1_Load);
             // 
             // AppForm
             // 

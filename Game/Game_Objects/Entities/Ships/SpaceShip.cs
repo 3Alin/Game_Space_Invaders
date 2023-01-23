@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Proiect_Space_Invaders.Library;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+
 
 namespace Proiect_Space_Invaders.Game
 {
@@ -16,48 +12,92 @@ namespace Proiect_Space_Invaders.Game
         public float bullet_speed { get; set; } = 0.8f;
         public int shoot_cooldown { get; set; } = 1000;
 
-        ProjectileManager projectiles;
-        public float elapsedTime;
-        public enum state  { idle, left, right }
-        public state currentState = state.idle;
+        private ProjectileManager projectiles;
+        protected float coolDownElapsedTime;
+
+        protected Bitmap sprite;
+        protected enum state  { idle, half_left, left, half_right, right }
+        protected state currentState = state.idle;
+        private float animationElapsedTime;
+        protected const int SPRITE_OFFSET_X = 20;
+        protected const int SPRITE_OFFSET_Y = 30;
+
 
         public SpaceShip(ProjectileManager projectiles) 
         {
             this.projectiles = projectiles;
-            elapsedTime = shoot_cooldown;
+            coolDownElapsedTime = shoot_cooldown;
+            animationElapsedTime = 0;
             width = 60;
             height = 60;
         }
 
 
-        public void idle(float dt)
+        public void idle()
         {
+            animationElapsedTime = 0;
             currentState = state.idle;
         }
 
         public void move(float speed, float dt)
         {
+            const int CHANGE_TIME = 200;
+            if (animationElapsedTime < CHANGE_TIME)
+                animationElapsedTime += dt;
+
             if (speed > 0)
-                currentState = state.right;
+            {
+                if (animationElapsedTime < CHANGE_TIME)
+                    currentState = state.half_right;
+                else if (currentState == state.left)
+                    idle();
+                else
+                    currentState = state.right;
+            }
             else
-                currentState = state.left;
+            {
+                if (animationElapsedTime < CHANGE_TIME)
+                    currentState = state.half_left;
+                else if (currentState == state.right)
+                    idle();
+                else
+                    currentState = state.left;
+            }
 
-            if (x + speed * dt < -width || x + speed * dt > Program.screenSize[0])
-                speed = 0;
-
+            if (x + speed * dt < 0 || x + speed * dt > Program.screenSize[0] - width)
+                return;
             x += speed * dt;
         }
 
         public void shoot(float dt)
         {
-            if (elapsedTime > shoot_cooldown)
+            if (coolDownElapsedTime > shoot_cooldown)
             {
-                elapsedTime = 0;
-                Projectile projectile = new Projectile(this, bullet_speed, x + width / 2, y + 10);
+                AssetManager.playSound("shoot1.wav");
+                coolDownElapsedTime = 0;
+                Projectile projectile = new Projectile(this, bullet_speed, x + sprite.Width / 2, y + 10);
+                projectile.x -= projectile.width * 2;
                 projectiles.addProjectile(projectile);
             }
 
-            elapsedTime += dt;
+            coolDownElapsedTime += dt;
+        }
+
+        public void doubleShoot(float dt)
+        {
+            if (coolDownElapsedTime >= shoot_cooldown)
+            {
+                AssetManager.playSound("shoot2.wav");
+                coolDownElapsedTime = 0;
+                Projectile projectile = new Projectile(this, bullet_speed, x + sprite.Width / 2 - 20, y);
+                projectile.x -= projectile.width * 2;
+                projectiles.addProjectile(projectile);
+                projectile = new Projectile(this, bullet_speed, x + sprite.Width / 2 + 20, y);
+                projectile.x -= projectile.width;
+                projectiles.addProjectile(projectile);
+            }
+
+            coolDownElapsedTime += dt;
         }
 
         public void takeDamage(int dmg)

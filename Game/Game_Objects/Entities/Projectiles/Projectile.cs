@@ -1,20 +1,18 @@
-﻿
-using System;
-using System.Drawing;
+﻿using System.Drawing;
 
 
 namespace Proiect_Space_Invaders.Game
 {
     public class Projectile : GameObject, IRenderedObj
     {
-        Brush brush = new SolidBrush(Color.White);
+        Brush brush = new SolidBrush(Color.Orange);
         public SpaceShip owner;
         public float speed;
 
         public Projectile(SpaceShip owner, float speed, float x, float y) 
         {
-            width = 20;
-            height = 20;
+            width = 6;
+            height = 6;
             this.owner = owner;
             this.speed = speed;
             this.x = x; this.y = y;

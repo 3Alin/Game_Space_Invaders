@@ -1,16 +1,9 @@
 ﻿using Proiect_Space_Invaders.Library;
 using Proiect_Space_Invaders.UI;
-using System;
-using System.Collections.Generic;
-using System.Deployment.Application;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Proiect_Space_Invaders.Game
 {
@@ -23,14 +16,21 @@ namespace Proiect_Space_Invaders.Game
         public MenuPanel menuPanel;
         public GamePanel gamePanel;
         public EndPanel endPanel;
+
+        private static Bitmap frame = new Bitmap(Program.screenSize[0], Program.screenSize[1]);
+        private Graphics gr = Graphics.FromImage(frame);
+        public bool flicker { get; set; }
         public bool running { get; set; }
+
 
         public Game(MenuPanel menuPanel , GamePanel gamePanel, EndPanel endPanel) 
         {
+            AssetManager.loadAssets();
             UITools.game = this;
             this.menuPanel = menuPanel;
             this.gamePanel = gamePanel;  
-            this.endPanel = endPanel;  
+            this.endPanel = endPanel;
+            this.flicker = true;
         }
 
         public void initialise()
@@ -52,9 +52,20 @@ namespace Proiect_Space_Invaders.Game
 
         public void paint(Graphics g)
         {
-            background.paint(g);
-            projectileManager.paint(g);
-            shipsManager.paint(g);
+            if (flicker)
+            {
+                background.paint(g);
+                projectileManager.paint(g);
+                shipsManager.paint(g);
+                Thread.Sleep(1);
+            }
+            else
+            {
+                background.paint(gr);
+                projectileManager.paint(gr);
+                shipsManager.paint(gr);
+                g.DrawImage(frame, 0, 0);
+            }
         }
 
         public void run()
@@ -76,7 +87,6 @@ namespace Proiect_Space_Invaders.Game
                 watch.Restart();
                 update(dt);
                 paint(graphics);
-                Thread.Sleep(1);
             }
 
             menuPanel.Invoke(new MethodInvoker(delegate () {

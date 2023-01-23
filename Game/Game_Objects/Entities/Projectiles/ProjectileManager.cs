@@ -1,16 +1,12 @@
 ﻿using Proiect_Space_Invaders.Library;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Proiect_Space_Invaders.Game
 {
     public class ProjectileManager : IRenderedObj
     {
-        public static readonly int MAX_PROJECTILES = 100;
+        public static readonly int MAX_PROJECTILES = 200;
         public Projectile[] projectile = new Projectile[MAX_PROJECTILES];
 
         public Game game;
@@ -53,10 +49,14 @@ namespace Proiect_Space_Invaders.Game
 
                     shipsManager.ship[j].takeDamage(projectile[i].owner.damage);
                     if (shipsManager.ship[j] is PlayerShip)
+                    {
+                        AssetManager.playSound("damaged.wav");
                         UITools.refreshGamePanel("healthLabel", "Health: " + game.getPlayer().health);
+                    }
 
                     if (shipsManager.ship[j].health <= 0)
                     {
+                        AssetManager.playSound("destroyed.wav");
                         if (shipsManager.ship[j] is PlayerShip)
                         {
                             UITools.refreshEndPanel("scoreLabel", "YOUR SCORE: " + game.getPlayer().score);
@@ -64,7 +64,7 @@ namespace Proiect_Space_Invaders.Game
                             UITools.refreshEndPanel("hiLabel", "HIGHSCORE: " + highScore.score + " by " + highScore.name);
                             game.running = false;
                         }
-                        else
+                        else if (game.getPlayer() != null)
                         {
                             game.getPlayer().score++;
                             game.getPlayer().money++;

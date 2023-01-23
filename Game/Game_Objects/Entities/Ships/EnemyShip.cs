@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Proiect_Space_Invaders.Library;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Proiect_Space_Invaders.Game
 {
     internal class EnemyShip : SpaceShip, IRenderedObj
     {
-        Brush brush = new SolidBrush(Color.Red);
         private bool spawning = true;
         private const int MAX_IDLE_TIME = 2500;
         private float idleTime = new Random().Next(0, MAX_IDLE_TIME);
@@ -20,7 +17,7 @@ namespace Proiect_Space_Invaders.Game
         {
             health = ShipsManager.ENEMY_HEALTH;
             Random rnd = new Random();
-            targetX = rnd.Next((int)width, Program.screenSize[0] - (int)width);
+            targetX = rnd.Next(0, Program.screenSize[0] - (int)width);
             targetY = rnd.Next(0, Program.screenSize[1] / 2);
             x = targetX;
             y = -height;
@@ -47,10 +44,11 @@ namespace Proiect_Space_Invaders.Game
                 if (idleTime > 0)
                 {
                     idleTime -= dt;
+                    idle();
                     return;
                 }
                 idleTime = new Random().Next(0, MAX_IDLE_TIME);
-                targetX = new Random().Next((int)-width, Program.screenSize[0]);
+                targetX = new Random().Next(0, (int)(Program.screenSize[0] - width));
             }
 
             if (x > targetX)
@@ -69,7 +67,18 @@ namespace Proiect_Space_Invaders.Game
 
         public void paint(Graphics g)
         {
-            g.FillRectangle(brush, x, y, width, height);
+            if (currentState == state.left)
+                sprite = AssetManager.enemyShip[0];
+            else if (currentState == state.half_left)
+                sprite = AssetManager.enemyShip[1];
+            else if (currentState == state.half_right)
+                sprite = AssetManager.enemyShip[3];
+            else if (currentState == state.right)
+                sprite = AssetManager.enemyShip[4];
+            else
+                sprite = AssetManager.enemyShip[2];
+
+            g.DrawImage(sprite, x - SPRITE_OFFSET_X, y - SPRITE_OFFSET_Y);
         }
         
     }
