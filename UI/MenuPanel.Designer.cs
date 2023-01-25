@@ -219,6 +219,8 @@
             // soundBox
             // 
             this.soundBox.AutoSize = true;
+            this.soundBox.Checked = true;
+            this.soundBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.soundBox.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.soundBox.Location = new System.Drawing.Point(81, 692);
             this.soundBox.Name = "soundBox";

@@ -14,7 +14,7 @@ namespace Proiect_Space_Invaders.Library
         public static readonly Bitmap[] enemyShip = new Bitmap[5];
         public static readonly Bitmap[] thrusters = new Bitmap[2];
 
-        public static bool muteSound = false;
+        public static bool muteSound = true;
         public static readonly int MAX_SOUNDS = 20;
         public static int soundsCount = 0;
 
@@ -25,7 +25,7 @@ namespace Proiect_Space_Invaders.Library
             for (int i = 0; i < 5; i++)
             {
                 int index = tileSize * i;
-                playerShip[i] = tmp.Clone(new Rectangle(index, 0, tileSize, tmp.Height), PixelFormat.Format64bppArgb);
+                playerShip[i] = tmp.Clone(new Rectangle(index, 0, tileSize, tmp.Height), PixelFormat.Format32bppArgb);
             }
 
             tmp = new Bitmap(path + "enemy_ship.png");
@@ -33,7 +33,7 @@ namespace Proiect_Space_Invaders.Library
             for (int i = 0; i < 5; i++)
             {
                 int index = tileSize * i;
-                enemyShip[i] = tmp.Clone(new Rectangle(index, 0, tileSize, tmp.Height), PixelFormat.Format64bppArgb);
+                enemyShip[i] = tmp.Clone(new Rectangle(index, 0, tileSize, tmp.Height), PixelFormat.Format32bppArgb);
                 enemyShip[i].RotateFlip(RotateFlipType.Rotate180FlipX);
             }
         }

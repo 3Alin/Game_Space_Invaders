@@ -90,10 +90,10 @@ namespace Proiect_Space_Invaders.Game
                 AssetManager.playSound("shoot2.wav");
                 coolDownElapsedTime = 0;
                 Projectile projectile = new Projectile(this, bullet_speed, x + sprite.Width / 2 - 20, y);
-                projectile.x -= projectile.width * 2;
+                projectile.x -= projectile.width;
                 projectiles.addProjectile(projectile);
                 projectile = new Projectile(this, bullet_speed, x + sprite.Width / 2 + 20, y);
-                projectile.x -= projectile.width;
+                projectile.x -= projectile.width * 2;
                 projectiles.addProjectile(projectile);
             }
 

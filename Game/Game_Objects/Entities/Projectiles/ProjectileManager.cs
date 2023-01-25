@@ -6,7 +6,7 @@ namespace Proiect_Space_Invaders.Game
 {
     public class ProjectileManager : IRenderedObj
     {
-        public static readonly int MAX_PROJECTILES = 200;
+        public static readonly int MAX_PROJECTILES = 500;
         public Projectile[] projectile = new Projectile[MAX_PROJECTILES];
 
         public Game game;

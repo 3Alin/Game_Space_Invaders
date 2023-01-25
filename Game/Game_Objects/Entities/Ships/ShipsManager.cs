@@ -59,7 +59,7 @@ namespace Proiect_Space_Invaders.Game
 
             lastMilestone = player.score;
 
-            if (MAX_SHIPS < 13)
+            if (MAX_SHIPS < 50)
                 growShipsVectorWith(3);
             if (ENEMY_SPAWN_COOLDOWN >= 25)
                 ENEMY_SPAWN_COOLDOWN -= 25;
