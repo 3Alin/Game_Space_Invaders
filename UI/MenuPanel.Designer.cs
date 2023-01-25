@@ -42,6 +42,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.soundBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // startButton
@@ -77,7 +78,7 @@
             this.flickerBox.Checked = true;
             this.flickerBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.flickerBox.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flickerBox.Location = new System.Drawing.Point(81, 698);
+            this.flickerBox.Location = new System.Drawing.Point(81, 658);
             this.flickerBox.Name = "flickerBox";
             this.flickerBox.Size = new System.Drawing.Size(283, 28);
             this.flickerBox.TabIndex = 2;
@@ -215,11 +216,24 @@
             this.label10.TabIndex = 14;
             this.label10.Text = "Alin";
             // 
+            // soundBox
+            // 
+            this.soundBox.AutoSize = true;
+            this.soundBox.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.soundBox.Location = new System.Drawing.Point(81, 692);
+            this.soundBox.Name = "soundBox";
+            this.soundBox.Size = new System.Drawing.Size(295, 28);
+            this.soundBox.TabIndex = 15;
+            this.soundBox.Text = "Mute sound (Removes lag spikes)";
+            this.soundBox.UseVisualStyleBackColor = true;
+            this.soundBox.CheckedChanged += new System.EventHandler(this.soundBox_CheckedChanged);
+            // 
             // MenuPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
+            this.Controls.Add(this.soundBox);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -261,5 +275,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.CheckBox soundBox;
     }
 }

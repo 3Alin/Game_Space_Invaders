@@ -1,14 +1,6 @@
 ﻿using Proiect_Space_Invaders.Library;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Proiect_Space_Invaders.UI
 {
@@ -54,6 +46,11 @@ namespace Proiect_Space_Invaders.UI
         private void flickerBox_CheckedChanged(object sender, EventArgs e)
         {
             game.flicker = flickerBox.Checked;
+        }
+
+        private void soundBox_CheckedChanged(object sender, EventArgs e)
+        {
+            AssetManager.muteSound = soundBox.Checked;
         }
     }
 }

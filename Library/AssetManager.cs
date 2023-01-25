@@ -14,6 +14,7 @@ namespace Proiect_Space_Invaders.Library
         public static readonly Bitmap[] enemyShip = new Bitmap[5];
         public static readonly Bitmap[] thrusters = new Bitmap[2];
 
+        public static bool muteSound = false;
         public static readonly int MAX_SOUNDS = 20;
         public static int soundsCount = 0;
 
@@ -39,7 +40,7 @@ namespace Proiect_Space_Invaders.Library
 
         public static void playSound(string soundName)
         {
-            if (soundsCount > MAX_SOUNDS)
+            if (muteSound || soundsCount > MAX_SOUNDS)
                 return;
 
             AudioFileReader stream = new AudioFileReader(path + soundName);
