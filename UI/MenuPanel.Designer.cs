@@ -219,14 +219,12 @@
             // soundBox
             // 
             this.soundBox.AutoSize = true;
-            this.soundBox.Checked = true;
-            this.soundBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.soundBox.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.soundBox.Location = new System.Drawing.Point(81, 692);
             this.soundBox.Name = "soundBox";
-            this.soundBox.Size = new System.Drawing.Size(295, 28);
+            this.soundBox.Size = new System.Drawing.Size(127, 28);
             this.soundBox.TabIndex = 15;
-            this.soundBox.Text = "Mute sound (Removes lag spikes)";
+            this.soundBox.Text = "Mute sound";
             this.soundBox.UseVisualStyleBackColor = true;
             this.soundBox.CheckedChanged += new System.EventHandler(this.soundBox_CheckedChanged);
             // 

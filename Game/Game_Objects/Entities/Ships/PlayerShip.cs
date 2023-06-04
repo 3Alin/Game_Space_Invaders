@@ -1,4 +1,5 @@
 ﻿using Proiect_Space_Invaders.Library;
+using System;
 using System.Drawing;
 using System.Windows.Input;
 
@@ -14,10 +15,13 @@ namespace Proiect_Space_Invaders.Game
             setPosition(Program.screenSize[0] / 2 - width / 2, Program.screenSize[1] - height * 2);
             health = 10;
             bullet_speed = -bullet_speed;
+            sprite = AssetManager.playerShip[2];
         }
 
         public void update(float dt)
         {
+            Console.WriteLine(dt);
+
             if (Keyboard.IsKeyDown(Key.A) || Keyboard.IsKeyDown(Key.Left))
                 move(-ship_speed, dt);
             else if (Keyboard.IsKeyDown(Key.D) || Keyboard.IsKeyDown(Key.Right))
@@ -29,6 +33,8 @@ namespace Proiect_Space_Invaders.Game
                 doubleShoot(dt);
             else if (coolDownElapsedTime < shoot_cooldown)
                 coolDownElapsedTime += dt;
+
+            Console.WriteLine(x + " " + y);
         }
 
         public void paint(Graphics g)

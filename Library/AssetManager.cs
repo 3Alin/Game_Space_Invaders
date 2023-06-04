@@ -2,6 +2,7 @@
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Proiect_Space_Invaders.Library
@@ -14,7 +15,7 @@ namespace Proiect_Space_Invaders.Library
         public static readonly Bitmap[] enemyShip = new Bitmap[5];
         public static readonly Bitmap[] thrusters = new Bitmap[2];
 
-        public static bool muteSound = true;
+        public static bool muteSound = false;
         public static readonly int MAX_SOUNDS = 20;
         public static int soundsCount = 0;
 
@@ -43,21 +44,24 @@ namespace Proiect_Space_Invaders.Library
             if (muteSound || soundsCount > MAX_SOUNDS)
                 return;
 
-            AudioFileReader stream = new AudioFileReader(path + soundName);
-            WaveOut sound = new WaveOut();
+            Thread tmp = new Thread(() => {
+                AudioFileReader stream = new AudioFileReader(path + soundName);
+                WaveOut sound = new WaveOut();
 
-            if (soundName == "shoot2.wav")
-                stream.Volume = 0.3f;
+                if (soundName == "shoot2.wav")
+                    stream.Volume = 0.3f;
 
-            sound.Init(stream);
-            sound.Play();
-            soundsCount++;
-            Task.Delay(500).ContinueWith(t =>
-            {
-                sound.Dispose();
-                stream.Dispose();
-                soundsCount--;
+                sound.Init(stream);
+                sound.Play();
+                soundsCount++;
+                Task.Delay(500).ContinueWith(t =>
+                {
+                    sound.Dispose();
+                    stream.Dispose();
+                    soundsCount--;
+                });
             });
+            tmp.Start();
         }
     }
 }

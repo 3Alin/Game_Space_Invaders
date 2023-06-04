@@ -21,6 +21,7 @@ namespace Proiect_Space_Invaders.Game
             targetY = rnd.Next(0, Program.screenSize[1] / 2);
             x = targetX;
             y = -height;
+            sprite = AssetManager.enemyShip[2];
         }
 
         private void spawn(float dt)

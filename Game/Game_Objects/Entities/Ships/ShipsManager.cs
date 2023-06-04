@@ -20,7 +20,7 @@ namespace Proiect_Space_Invaders.Game
         {
             MAX_SHIPS = 5;
             ENEMY_HEALTH = 2;
-            ENEMY_SPAWN_COOLDOWN = 1000;
+            ENEMY_SPAWN_COOLDOWN = 1095;
             this.projectileManager = projectileManager;
             this.ship = new SpaceShip[MAX_SHIPS];
             this.ship[0] = new PlayerShip(projectileManager);
